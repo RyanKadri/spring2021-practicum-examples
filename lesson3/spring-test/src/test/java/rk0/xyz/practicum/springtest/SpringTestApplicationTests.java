@@ -1,13 +1,13 @@
-package xyz.rk0.practicum.logging;
+package rk0.xyz.practicum.springtest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LoggingApplicationTests {
+class SpringTestApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }
