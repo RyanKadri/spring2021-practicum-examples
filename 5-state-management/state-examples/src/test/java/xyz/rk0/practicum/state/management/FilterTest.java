@@ -1,5 +1,6 @@
 package xyz.rk0.practicum.state.management;
 
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -30,6 +31,33 @@ public class FilterTest {
             .map(num -> num * 2)
             .collect(Collectors.toList());
         Assertions.assertEquals(List.of(2, 4, 6), doubledNumbers);
+    }
+
+    @Test
+    public void describeDays() {
+        List<String> daysOfTheWeek = Lists.newArrayList(
+            "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+        );
+        List<String> weekend = extractWeekend(daysOfTheWeek);
+        System.out.println("There are " + daysOfTheWeek.size() + " days of the week");
+        System.out.println("... and " + weekend.size() + " days of the weekend");
+    }
+
+    private List<String> extractWeekend(List<String> allDays) {
+        List<String> weekend = allDays;
+        for(int i = weekend.size() - 1; i >= 0; i--) {
+            if(!weekend.get(i).equals("Saturday") && !weekend.get(i).equals("Sunday")) {
+                weekend.remove(i);
+            }
+        }
+        return weekend;
+    }
+
+    private List<Double> resultHistory = new ArrayList<>();
+    public double maybePure(double a, double b) {
+        double sum = a + b;
+        resultHistory.add(sum);
+        return sum;
     }
 
     public <T> List<T> filterAnything(List<T> numbers, FilterDecider<T> decider) {
